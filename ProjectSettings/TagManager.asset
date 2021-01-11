@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Missile
   - Slow Strong
+  - Enemy Player
   layers:
   - Default
   - TransparentFX

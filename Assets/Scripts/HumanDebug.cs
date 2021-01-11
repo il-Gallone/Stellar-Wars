@@ -12,7 +12,7 @@ public class HumanDebug : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0);
-        if (Input.GetKeyDown("m")){
+        if (Input.GetKeyDown("space")){
             Instantiate(debugMissile, transform.position, transform.rotation);
         }
     }
