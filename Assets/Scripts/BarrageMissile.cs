@@ -28,7 +28,7 @@ public class BarrageMissile : MonoBehaviour
         }
         transform.eulerAngles += new Vector3(0, 0, direction * rotationSpeed * Time.deltaTime);
         transform.position += transform.up * speed * Time.deltaTime;
-        if(transform.position.y >= 6)
+        if(Mathf.Abs(transform.position.y) >= 6 || Mathf.Abs(transform.position.x) >= 9)
         {
             Destroy(gameObject);
         }

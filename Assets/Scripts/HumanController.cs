@@ -16,6 +16,14 @@ public class HumanController : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(Input.GetAxisRaw("Horizontal") * speed * Time.deltaTime, 0);
+        if(transform.position.x > 6.5)
+        {
+            transform.position = new Vector3(6.49f, -4f);
+        }
+        if (transform.position.x < -6.5)
+        {
+            transform.position = new Vector3(-6.49f, -4f);
+        }
         if (mode == ABILITY.MISSILE)
         {
             BMTimer += Time.deltaTime;
