@@ -5,6 +5,7 @@ using UnityEngine;
 public class AlienDebug : MonoBehaviour
 {
     public float speed = 1;
+    public int health = 500;
 
     // Update is called once per frame
     void Update()
