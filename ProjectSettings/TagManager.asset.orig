@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Missile
+<<<<<<< HEAD
+  - Slow Strong
+=======
   - Magnet Bomb
+>>>>>>> human
   - Enemy Player
   layers:
   - Default
