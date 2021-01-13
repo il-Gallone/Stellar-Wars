@@ -22,6 +22,7 @@ public class HumanController : MonoBehaviour
     public GameObject plasmaProj;
     public GameObject coolantProj;
     public GameObject energyProj;
+    public GameObject nanoVirusCloud;
 
     public GameObject heatField;
     public ParticleSystem coolantField;
@@ -33,8 +34,10 @@ public class HumanController : MonoBehaviour
     float heatFlux = 3.3f;
     float STimer = 0;
     public float swapCooldown = 0;
-    public float UTimer = 0;
+    float UTimer = 0;
     public float UCharge = 0;
+    public float OCharge = 0;
+    public bool overcharged = false;
 
     Rigidbody2D rigid2D;
     LineRenderer tesla;
@@ -146,6 +149,15 @@ public class HumanController : MonoBehaviour
         }
         if(Input.GetButtonDown("P1 Uber"))
         {
+            if (UCharge >= 60 && uberMode == 0)
+            {
+                if(OCharge == UCharge)
+                {
+                    overcharged = true;
+                }
+                UCharge -= 60;
+                Instantiate(nanoVirusCloud, transform.position, transform.rotation);
+            }
             if(UCharge >= 100 && uberMode == 1)
             {
                 if (mode == ABILITY.HEAT)
@@ -160,6 +172,12 @@ public class HumanController : MonoBehaviour
                     {
                         speed /= 2;
                     }
+                }
+                if (OCharge == UCharge)
+                {
+                    overcharged = true;
+                    tesla.startWidth = 0.15f;
+                    tesla.endWidth = 0.15f;
                 }
                 tesla.enabled = true;
                 mode = ABILITY.UBER;
@@ -314,6 +332,17 @@ public class HumanController : MonoBehaviour
                     if(UCharge <= 0)
                     {
                         tesla.enabled = false;
+                        if (uberMode == 1)
+                        {
+                            if (overcharged)
+                            {
+                                tesla.startWidth = 0.075f;
+                                tesla.endWidth = 0.075f;
+                                overcharged = false;
+                                GameObject alien = GameObject.FindGameObjectWithTag("Enemy Player");
+                                alien.SendMessage("Systems Damaged");
+                            }
+                        }
                         if(uberMode == 2)
                         {
                             PlayerDied();
@@ -360,9 +389,19 @@ public class HumanController : MonoBehaviour
                 }
         }
         UCharge += Time.deltaTime * 0.1f;
+        if(uberMode == 0 && UCharge > 60)
+        {
+            OCharge += UCharge - 60;
+            UCharge = 60;
+        }
         if(uberMode == 1 && UCharge > 100)
         {
+            OCharge += UCharge - 100;
             UCharge = 100;
+        }
+        if(OCharge > UCharge)
+        {
+            OCharge = UCharge;
         }
         if (health <= 0)
         {
