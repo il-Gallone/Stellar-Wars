@@ -388,6 +388,7 @@ MonoBehaviour:
   speed: 5
   debugMissile: {fileID: 3032732201042987310, guid: 6e09da93aae85ff46920ba423be9a91a,
     type: 3}
+  health: 250
 --- !u!212 &1879064618
 SpriteRenderer:
   m_ObjectHideFlags: 0
