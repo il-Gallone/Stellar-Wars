@@ -7,6 +7,7 @@ public class HumanDebug : MonoBehaviour
 
     public float speed = 1;
     public GameObject debugMissile;
+    public int health = 250;
 
     // Update is called once per frame
     void Update()
