@@ -145,6 +145,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  speedScaling: 0.5
-  rotationSpeed: 30
+  speedScaling: 0.8
+  rotationSpeed: 45
   damage: 5

@@ -17,7 +17,7 @@ public class HomingMissile : MonoBehaviour
         int startDirection = 1;
         startDirection -= Random.Range(0, 2) * 2;
         rigid2D = gameObject.GetComponent<Rigidbody2D>();
-        transform.rotation = Quaternion.AngleAxis(startDirection * 85, Vector3.forward);
+        transform.rotation = Quaternion.AngleAxis(startDirection * 105, Vector3.forward);
     }
 
     // Update is called once per frame
@@ -29,6 +29,7 @@ public class HomingMissile : MonoBehaviour
         Vector3 direction = alien.transform.position - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.AngleAxis(angle-90, Vector3.forward), rotationSpeed * Time.deltaTime);
+        rotationSpeed += speedScaling * 10 * Time.deltaTime;
 
         if (Mathf.Abs(transform.position.y) >= 5.2 || Mathf.Abs(transform.position.x) >= 9.8)
         {

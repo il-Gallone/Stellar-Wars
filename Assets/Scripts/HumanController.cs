@@ -24,6 +24,7 @@ public class HumanController : MonoBehaviour
     public GameObject energyProj;
 
     public GameObject heatField;
+    public ParticleSystem coolantField;
     public SpriteRenderer armourOverlay;
     public SpriteRenderer finalHope;
     
@@ -45,6 +46,10 @@ public class HumanController : MonoBehaviour
         if (mode != ABILITY.HEAT || heatMode != 0)
         {
             heatField.GetComponent<SpriteRenderer>().enabled = false;
+        }
+        if (mode != ABILITY.HEAT || heatMode != 1)
+        {
+            coolantField.Stop();
         }
         if (mode != ABILITY.SPEED || speedMode != 0)
         {
@@ -87,6 +92,7 @@ public class HumanController : MonoBehaviour
             if (mode == ABILITY.HEAT)
             {
                 heatField.GetComponent<SpriteRenderer>().enabled = false;
+                coolantField.Stop();
             }
             if (mode == ABILITY.SPEED)
             {
@@ -114,6 +120,10 @@ public class HumanController : MonoBehaviour
             {
                 heatField.GetComponent<SpriteRenderer>().enabled = true;
             }
+            else
+            {
+                coolantField.Play();
+            }    
             swapCooldown = 20;
         }
         if (Input.GetButtonDown("P1 Ability 3") && swapCooldown <= 0)
@@ -121,6 +131,7 @@ public class HumanController : MonoBehaviour
             if (mode == ABILITY.HEAT)
             {
                 heatField.GetComponent<SpriteRenderer>().enabled = false;
+                coolantField.Stop();
             }
             mode = ABILITY.SPEED;
             if (speedMode == 0)
@@ -140,6 +151,7 @@ public class HumanController : MonoBehaviour
                 if (mode == ABILITY.HEAT)
                 {
                     heatField.GetComponent<SpriteRenderer>().enabled = false;
+                    coolantField.Stop();
                 }
                 if (mode == ABILITY.SPEED)
                 {
@@ -322,6 +334,10 @@ public class HumanController : MonoBehaviour
                                     {
                                         heatField.GetComponent<SpriteRenderer>().enabled = true;
                                     }
+                                    else
+                                    {
+                                        coolantField.Play();
+                                    }
                                     break;
                                 }
                             case 2:
@@ -355,6 +371,7 @@ public class HumanController : MonoBehaviour
                 if (mode == ABILITY.HEAT)
                 {
                     heatField.GetComponent<SpriteRenderer>().enabled = false;
+                    coolantField.Stop();
                 }
                 if (mode == ABILITY.SPEED)
                 {
