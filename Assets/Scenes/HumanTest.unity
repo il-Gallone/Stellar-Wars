@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+  m_SortingOrder: 2
+  missileMode: 1
+  heatMode: 1
+  uberMode: 0
+  nanoVirusCloud: {fileID: 3197386212817286838, guid: 0bb7fc7410a850e43a547356748aae67,
+    type: 3}
+  OCharge: 0
+  overcharged: 0
+  m_SortingOrder: 1
+        time: 0
+  m_SortingOrder: 3
 --- !u!1 &1336778183
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,6 +280,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 6
+  m_SortingOrder: 3
 --- !u!1 &1492015322
 GameObject:
   m_ObjectHideFlags: 0
@@ -355,6 +367,7 @@ Transform:
 --- !u!1001 &2201687640862590748
 PrefabInstance:
   m_ObjectHideFlags: 0
+  m_SortingOrder: 3
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
@@ -421,3 +434,4 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4caa21c6bc778794c9097e272bc1fe99, type: 3}
+  m_SortingOrder: 3
