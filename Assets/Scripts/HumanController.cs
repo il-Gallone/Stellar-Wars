@@ -87,7 +87,7 @@ public class HumanController : MonoBehaviour
         {
             swapCooldown -= Time.deltaTime;
         }
-        if (Input.GetButtonDown("P1 Ability 1") && swapCooldown <= 0 && rigid2D.position.y < -3)
+        if (Input.GetButtonDown("P1 Ability 1") && swapCooldown <= 0 && rigid2D.position.y < -3 && mode != ABILITY.MISSILE)
         {
             if (mode == ABILITY.HEAT)
             {
@@ -105,7 +105,7 @@ public class HumanController : MonoBehaviour
             mode = ABILITY.MISSILE;
             swapCooldown = 20;
         }
-        if (Input.GetButtonDown("P1 Ability 2") && swapCooldown <= 0 && rigid2D.position.y < -3)
+        if (Input.GetButtonDown("P1 Ability 2") && swapCooldown <= 0 && rigid2D.position.y < -3 && mode != ABILITY.HEAT)
         {
             if (mode == ABILITY.SPEED)
             {
@@ -126,7 +126,7 @@ public class HumanController : MonoBehaviour
             }    
             swapCooldown = 20;
         }
-        if (Input.GetButtonDown("P1 Ability 3") && swapCooldown <= 0)
+        if (Input.GetButtonDown("P1 Ability 3") && swapCooldown <= 0 && mode != ABILITY.SPEED)
         {
             if (mode == ABILITY.HEAT)
             {
@@ -144,7 +144,7 @@ public class HumanController : MonoBehaviour
             }
             swapCooldown = 20;
         }
-        if(Input.GetButtonDown("P1 Uber"))
+        if(Input.GetButtonDown("P1 Uber") && mode != ABILITY.UBER)
         {
             if(UCharge >= 100 && uberMode == 1)
             {
@@ -163,6 +163,7 @@ public class HumanController : MonoBehaviour
                 }
                 tesla.enabled = true;
                 mode = ABILITY.UBER;
+                swapCooldown = 50;
             }
         }
         switch (mode)
@@ -270,7 +271,7 @@ public class HumanController : MonoBehaviour
                         if (UTimer >= 0.2f)
                         {
                             UTimer -= 0.2f;
-                            alien.GetComponent<AlienDebug>().health -= 2;
+                            alien.GetComponent<AlienControl>().health -= 2;
                         }
                     }
                     if (uberMode == 2)
@@ -396,7 +397,7 @@ public class HumanController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy Player"))
         {
             rigid2D.velocity = new Vector2(rigid2D.velocity.x, -3);
-            collision.gameObject.GetComponent<AlienDebug>().health -= 30;
+            collision.gameObject.GetComponent<AlienControl>().health -= 30;
             UCharge += 15;
             health -= 10;
         }

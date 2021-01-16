@@ -13,8 +13,7 @@ public class AlienControl : MonoBehaviour
     Rigidbody2D rigid2D;
     public int health = 500;
 
-    private void Start()
-    {
+    private void Start(){
         rigid2D = gameObject.GetComponent<Rigidbody2D>();
     }
 

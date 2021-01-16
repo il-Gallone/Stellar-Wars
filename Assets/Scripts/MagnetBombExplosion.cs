@@ -22,7 +22,12 @@ public class MagnetBombExplosion : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision){
         if (collision.tag == "Player"){
-            collision.gameObject.GetComponent<HumanDebug>().health -= 10;
+            HumanController human = collision.gameObject.GetComponent<HumanController>();
+            if (human.mode == HumanController.ABILITY.SPEED && human.speedMode == 0){
+                human.health -= 5;
+            }else{
+                human.health -= 10;
+            }
         }
     }
 }

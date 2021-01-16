@@ -35,7 +35,7 @@ public class BasicProj : MonoBehaviour
     {
         if(collision.CompareTag("Enemy Player") && directionSpeed > 0)
         {
-            collision.gameObject.GetComponent<AlienDebug>().health -= damage;
+            collision.gameObject.GetComponent<AlienControl>().health -= damage;
             if(GameObject.FindGameObjectWithTag("Player").GetComponent<HumanController>().mode != HumanController.ABILITY.UBER)
                 GameObject.FindGameObjectWithTag("Player").GetComponent<HumanController>().UCharge += (float)(damage / 2);
             Destroy(gameObject);

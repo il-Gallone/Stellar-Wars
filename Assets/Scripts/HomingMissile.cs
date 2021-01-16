@@ -40,7 +40,7 @@ public class HomingMissile : MonoBehaviour
     {
         if (collision.CompareTag("Enemy Player"))
         {
-            collision.gameObject.GetComponent<AlienDebug>().health -= damage;
+            collision.gameObject.GetComponent<AlienControl>().health -= damage;
             if (GameObject.FindGameObjectWithTag("Player").GetComponent<HumanController>().mode != HumanController.ABILITY.UBER)
                 GameObject.FindGameObjectWithTag("Player").GetComponent<HumanController>().UCharge += (float)(damage / 2);
             Destroy(gameObject);
